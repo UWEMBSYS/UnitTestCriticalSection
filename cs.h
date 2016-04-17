@@ -1,16 +1,22 @@
 #pragma once
+#include <stdint.h>
+#include "rtos.h"
+#include "errcode.h"
 
-typedef XXXX CriticalSection_t;
+typedef struct {
+  ThreadId_t    id;     /* The thread ID of the thread holding this when count is non-zero */
+  unsigned long count;  /* count of the 'enters' by this thread */
+} CriticalSection_t;
+
 
 /**
- * Initialize a critical section object
+ * Initialize a critical section object. 
  * \param pCS  Container for critical section object
  * \return    ERR_SUCCESS  Critical Section was initialized
  *            ERR_BUSY     Object was already initialized
  *            ERR_PARAM    The parameter was NULL
  */
 ErrCode_t InitializeCriticalSection(CriticalSection_t* pCS);
-
 
 
 /**
