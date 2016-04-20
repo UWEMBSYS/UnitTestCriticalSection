@@ -10,7 +10,7 @@ ErrCode_t InitializeCriticalSection(CriticalSection_t* pCS)
 {
     ErrCode_t err = ERR_PARAM;
     
-    if (NULL == pCS) {
+    if (NULL != pCS) {
       /* How should an already initialized CS be detected? Can it? Is it worthwhile? */
       
       pCS->count = 0;

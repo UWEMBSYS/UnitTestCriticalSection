@@ -5,6 +5,7 @@
  * Mock access to a ficticious OS concept of a thread context
  */
 void OSThread_Set_GetThreadContext(ThreadContext_t* tc);
+void OSThread_Set_GetCurrentThreadId(ThreadId_t id);
 void OSThreadMock_Reset();
 
 /* in reality this would be defined in the real OS header file */

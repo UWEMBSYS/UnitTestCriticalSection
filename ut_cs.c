@@ -16,6 +16,18 @@ UT(VerifyUninitializedCSFailedEnter)
   return UT_PASSED;
 }
 
+UT(VerifyThe2ndThreadDoesNotTakeCS)
+{
+  CriticalSection_t cs;
+  ASSERT_EQ(ERR_SUCCESS, InitializeCriticalSection(&cs));
+  OSThread_Set_GetCurrentThreadId(1);
+  ASSERT_EQ(ERR_SUCCESS, EnterCriticalSection(&cs));
+  OSThread_Set_GetCurrentThreadId(2);
+  ASSERT_EQ(ERR_BUSY, EnterCriticalSection(&cs));
+  
+  return UT_PASSED;  
+}
+
 /*
 <insert lots more tests here, fixing the implementation of the critical section as you go to get them going>
 
@@ -25,7 +37,7 @@ UT(VerifyUninitializedCSFailedEnter)
 void ut_cs(void)
 {
  UTRUN(VerifyUninitializedCSFailedEnter);
-
+ UTRUN(VerifyThe2ndThreadDoesNotTakeCS);
  UTTOTALS();
 }
 

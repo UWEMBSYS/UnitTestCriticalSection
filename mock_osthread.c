@@ -23,7 +23,7 @@ void OSThread_Set_GetThreadContext(ThreadContext_t* tc)
 }
 
 
-ThreadId_t mock_current_threadid = 0;
+ThreadId_t mock_current_threadid = 1;
 void OSThread_Set_GetCurrentThreadId(ThreadId_t id)
 {
   mock_current_threadid = id;
